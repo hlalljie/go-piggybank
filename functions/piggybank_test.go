@@ -1,9 +1,8 @@
 package functions
 
 import (
+	"fmt"
 	"testing"
-
-	"strconv"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -28,7 +27,7 @@ func TestStoreInPiggyBank(t *testing.T) {
 			testBank := piggyBank{0.0, 0, 0, 0, 0}
 			storeInPiggyBank(&testBank, test.amount)
 			assert.Equal(t, testBank, test.finalBank,
-				"Balance should be "+strconv.FormatFloat(float64(test.amount), 'f', 2, 32)+" and there should be one "+test.coinName+" after deposit")
+				fmt.Sprintf("Balance should be %.2f and there should be one %s after deposit", test.amount, test.coinName))
 		})
 	}
 
